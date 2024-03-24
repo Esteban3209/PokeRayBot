@@ -12,6 +12,6 @@ async function getData(url) {
     return res
 }
 
-console.log(getData('https://api.jsonstorage.net/v1/json/645c2fc7-bc7a-4e9a-9ea8-78beb159b036/cdf8dad0-fbad-4bc8-8d22-893f76670b5a'))
+console.log(getData('https://api.jsonstorage.net/v1/json/645c2fc7-bc7a-4e9a-9ea8-78beb159b036/cdf8dad0-fbad-4bc8-8d22-893f76670b5a?apiKey=5f929d3c-38ea-4de5-bc8f-43363d6a3d46'))
 
 client.login(process.env.BOT_TOKEN)
