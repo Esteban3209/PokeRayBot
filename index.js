@@ -6,8 +6,7 @@ const client = new Client({intents: ["GuildBans", "GuildIntegrations", "GuildInv
 async function getData(url) {
     try {
         var res = await axios.get(url)
-        const data = await res.json()
-        return data
+        return res
 
     } catch (e) {
         console.log(`Error while communicating with the database : ${e}`)
