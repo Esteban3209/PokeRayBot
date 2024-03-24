@@ -1,7 +1,17 @@
 const { Client, Partials } = require("discord.js")
+const { axios } = require("axios")
 
-const client = new Client({intents: ["GuildBans", "GuildIntegrations", "GuildInvites", "GuildMembers", "GuildMessageReactions", "GuildMessages", "GuildModeration", "GuildPresences", "GuildScheduledEvents", "GuildVoiceStates", "Guilds", "MessageContent"], partials: [  ]})
+const client = new Client({intents: ["GuildBans", "GuildIntegrations", "GuildInvites", "GuildMembers", "GuildMessageReactions", "GuildMessages", "GuildModeration", "GuildPresences", "GuildScheduledEvents", "GuildVoiceStates", "Guilds", "MessageContent"], partials: [ 0, 1, 2, 3, 4 ]})
 
-console.log(Partials.Channel, Partials.GuildMember, Partials.GuildScheduledEvent, Partials.Message, Partials.Reaction, Partials.ThreadMember, Partials.User)
+async function getData(url) {
+    var res = await axios.get(url, {
+        headers: {
+            'Authorization': '55de8c36-bdca-4083-8908-affc0845aacc'
+        }
+    })
+    return res
+}
+
+console.log(await getData('https://api.jsonstorage.net/v1/json/645c2fc7-bc7a-4e9a-9ea8-78beb159b036/cdf8dad0-fbad-4bc8-8d22-893f76670b5a'))
 
 client.login(process.env.BOT_TOKEN)
