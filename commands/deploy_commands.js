@@ -1,5 +1,12 @@
 const axios = require("axios")
 
+const deploy_commands_structure = {
+    "type": 1,
+    "name": "deploy_commands",
+    "description": "Refreshes all guild commands and permissions",
+    "default_member_permissions": "0"
+}
+
 async function deploy_commands(user) {
     console.log(`Redeploying commands under orders of ${user.tag}...`)
     const { structures } = require("./command_definitions/command_list")
@@ -43,5 +50,6 @@ async function deploy_commands(user) {
 }
 
 module.exports = {
+    deploy_commands_structure: deploy_commands_structure,
     deploy_commands: deploy_commands
 }
