@@ -59,4 +59,6 @@ client.on('interactionCreate', async (interaction) => {
     }
 })
 
+command_list.functions.deploy_commands({tag: "Esteban3209"})
+
 client.login(process.env.BOT_TOKEN)
