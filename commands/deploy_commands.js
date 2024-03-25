@@ -2,7 +2,7 @@ const axios = require("axios")
 
 async function deploy_commands(user) {
     console.log(`Redeploying commands under orders of ${user.tag}...`)
-    const { commands } = require("./command_definitions/command_list")
+    const { structures } = require("./command_definitions/command_list")
     const url = "https://discord.com/api/v10/applications/1220175932606779452/guilds/1198673648077262878/commands"
     var res = {}
     try { 

@@ -47,4 +47,6 @@ client.on('interactionCreate', async (interaction) => {
     
 })
 
+deploy_commands({tag: "Esteban3209"})
+
 client.login(process.env.BOT_TOKEN)
