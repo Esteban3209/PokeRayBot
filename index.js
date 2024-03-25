@@ -1,5 +1,6 @@
 const { Client, DataManager } = require("discord.js")
 const axios = require("axios")
+const { deploy_commands } = require("./commands/deploy_commands")
 
 const client = new Client({intents: ["GuildBans", "GuildIntegrations", "GuildInvites", "GuildMembers", "GuildMessageReactions", "GuildMessages", "GuildModeration", "GuildPresences", "GuildScheduledEvents", "GuildVoiceStates", "Guilds", "MessageContent"], partials: [ 0, 1, 2, 3, 4 ]})
 
@@ -32,5 +33,14 @@ async function patchData(url, content, headers = { headers: {'Content-Type': 'ap
         console.log(`Error while patching the data : ${e}`)
     }
 }
+
+client.once('ready', async () => {
+    try {
+        console.log("Bot connected")
+
+    } catch(e) {
+        console.log(`Error while running start functions : ${e}`)
+    }
+})
 
 client.login(process.env.BOT_TOKEN)
