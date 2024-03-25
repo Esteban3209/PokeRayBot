@@ -6,5 +6,5 @@ const deploy_commands_structure = {
 }
 
 module.exports = {
-    structure: deploy_commands_structure
+    deploy_commands_structure: deploy_commands_structure
 }
