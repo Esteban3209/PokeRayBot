@@ -27,7 +27,7 @@ async function deploy_commands(user) {
             return
         }
     })
-    commands.forEach(async (data) => {
+    structures.forEach(async (data) => {
         try {
             await axios.post(url, data, {
                 headers: {
