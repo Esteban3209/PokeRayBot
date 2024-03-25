@@ -13,7 +13,7 @@ async function getData(url) {
     }
 }
 
-async function putData(url, content, headers = { headers: {'Content-Type': 'application/x-www-form-urlencoded'} }) {
+async function putData(url, content, headers = { headers: {'Content-Type': 'application/json'} }) {
     try {
         var res = await axios.put(url, content, headers)
         return res
