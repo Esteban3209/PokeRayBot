@@ -19,7 +19,7 @@ async function deploy_commands(user) {
             }
         })
     } catch(e) {
-        console.log(`Error while getting the command data : ${e}`)
+        console.error(`Error while getting the command data : ${e}`)
         return
     }
     res.data.forEach(async (command) => {
@@ -30,7 +30,7 @@ async function deploy_commands(user) {
                 }
             })
         } catch(e) {
-            console.log(`Error while deleting command ${command.name || "unknown"} : ${e}`)
+            console.error(`Error while deleting command ${command.name || "unknown"} : ${e}`)
             return
         }
     })
@@ -42,7 +42,7 @@ async function deploy_commands(user) {
                 }
             })
         } catch(e) {
-            console.log(`Error while registering guild command "${data?.name || "unknown"}" : ${e}`)
+            console.error(`Error while registering guild command "${data?.name || "unknown"}" : ${e}`)
             return
         }
     })

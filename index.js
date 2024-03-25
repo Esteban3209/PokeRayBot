@@ -50,7 +50,12 @@ client.on('interactionCreate', async (interaction) => {
                 case 1:
                     switch (interaction.commandName) {
                         case "deploy_commands":
-                            command_list.functions.deploy_commands(interaction.user)
+                            try {
+                                command_list.functions.deploy_commands(interaction.user)
+                                interaction.reply({ content: "Commands deployed successfully", ephemeral: true })
+                            } catch(e) {
+                                console.log(e)
+                            }
                             break
                     }
                     break
