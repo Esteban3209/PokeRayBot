@@ -23,7 +23,14 @@ async function putData(url, content, headers = { headers: {'Content-Type': 'appl
     }
 }
 
-const promise = putData(`https://api.jsonstorage.net/v1/json/645c2fc7-bc7a-4e9a-9ea8-78beb159b036/cdf8dad0-fbad-4bc8-8d22-893f76670b5a?apiKey=${process.env.API_KEY}`, {'bruh': 'bruh'})
-promise.then((res) => console.log(res.data))
+async function patchData(url, content, headers = { headers: {'Content-Type': 'application/json'} }) {
+    try {
+        var res = await axios.patch(url, content, headers)
+        return res
+
+    } catch (e) {
+        console.log(`Error while patching the data : ${e}`)
+    }
+}
 
 client.login(process.env.BOT_TOKEN)
