@@ -52,7 +52,7 @@ client.on('interactionCreate', async (interaction) => {
                         case "deploy_commands":
                             try {
                                 await command_list.functions.deploy_commands(interaction.user)
-                                await interaction.reply({ content: "Commands deployed successfully", ephemeral: true })
+                                await interaction.reply({ content: "Commands deployed successfully test 2", ephemeral: true })
                             } catch(e) {
                                 console.log(e)
                             }
