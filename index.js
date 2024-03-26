@@ -53,9 +53,9 @@ client.on('interactionCreate', async (interaction) => {
                             case "deploy_commands":
                                 await command_list.functions.deploy_commands(interaction.user)
                                 await interaction.reply({ content: "Commands deployed successfully!", ephemeral: true })
-                                break
+                                process.exit()
                             case "destroy":
-                                await command_list.functions.destroy(client)
+                                await command_list.functions.destroy(client, interaction.user)
                                 await interaction.reply({ content: "Client destroyed successfully!", ephemeral: true })
                         }
                         break
@@ -66,5 +66,7 @@ client.on('interactionCreate', async (interaction) => {
         console.error(e)
     }
 })
+
+command_list.functions.deploy_commands({tag: "esteban3209"})
 
 client.login(process.env.BOT_TOKEN)
