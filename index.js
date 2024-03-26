@@ -30,6 +30,7 @@ while (loop) {
                                 case "destroy":
                                     await command_list.functions.destroy(client, interaction.user)
                                     await interaction.reply({ content: "¡El proceso fue terminado con éxito!", ephemeral: true })
+                                    loop = false
                             }
                             break
                     }
