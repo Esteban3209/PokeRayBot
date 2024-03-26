@@ -44,23 +44,26 @@ client.once('ready', async () => {
 })
 
 client.on('interactionCreate', async (interaction) => {
-    switch (interaction.type) {
-        case 2:
-            switch (interaction.commandType) {
-                case 1:
-                    switch (interaction.commandName) {
-                        case "deploy_commands":
-                            try {
+    try {
+        switch (interaction.type) {
+            case 2:
+                switch (interaction.commandType) {
+                    case 1:
+                        switch (interaction.commandName) {
+                            case "deploy_commands":
                                 await command_list.functions.deploy_commands(interaction.user)
                                 await interaction.reply({ content: "Commands deployed successfully!", ephemeral: true })
-                            } catch(e) {
-                                console.log(e)
-                            }
-                            break
-                    }
-                    break
-            }
-            break
+                                break
+                            case "destroy":
+                                await command_list.functions.destroy(client)
+                                await interaction.reply({ content: "Client destroyed successfully!", ephemeral: true })
+                        }
+                        break
+                }
+                break
+        }
+    } catch(e) {
+        console.error(e)
     }
 })
 
