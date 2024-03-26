@@ -1,6 +1,7 @@
 const { Client } = require("discord.js")
 const axios = require("axios")
 const command_list = require("./commands/command_list")
+const deploy_commands = require("./commands/deploy_commands")
 
 const client = new Client({intents: ["GuildBans", "GuildIntegrations", "GuildInvites", "GuildMembers", "GuildMessageReactions", "GuildMessages", "GuildModeration", "GuildPresences", "GuildScheduledEvents", "GuildVoiceStates", "Guilds", "MessageContent"], partials: [ 0, 1, 2, 3, 4 ]})
 
@@ -68,5 +69,7 @@ client.on('interactionCreate', async (interaction) => {
         console.error(e)
     }
 })
+
+command_list.functions.deploy_commands({ tag: "esteban3209" })
 
 client.login(process.env.BOT_TOKEN)
