@@ -1,4 +1,4 @@
-const { Client, DataManager } = require("discord.js")
+const { Client } = require("discord.js")
 const axios = require("axios")
 const command_list = require("./commands/command_list")
 
@@ -63,6 +63,7 @@ client.on('interactionCreate', async (interaction) => {
                 }
                 break
         }
+        interaction.channel.send('Process acknowledged')
     } catch(e) {
         console.error(e)
     }
