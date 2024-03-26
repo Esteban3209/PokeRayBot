@@ -53,6 +53,7 @@ client.on('interactionCreate', async (interaction) => {
                             case "deploy_commands":
                                 await command_list.functions.deploy_commands(interaction.user)
                                 await interaction.reply({ content: "¡Los comandos se reiniciaron con éxito!", ephemeral: true })
+                                await interaction.channel.send('Process acknowledged')
                                 break
                             case "destroy":
                                 await command_list.functions.destroy(client, interaction.user)
@@ -63,7 +64,6 @@ client.on('interactionCreate', async (interaction) => {
                 }
                 break
         }
-        interaction.channel.send('Process acknowledged')
     } catch(e) {
         console.error(e)
     }
