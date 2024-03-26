@@ -52,11 +52,12 @@ client.on('interactionCreate', async (interaction) => {
                         switch (interaction.commandName) {
                             case "deploy_commands":
                                 await command_list.functions.deploy_commands(interaction.user)
-                                await interaction.reply({ content: "Commands deployed successfully!", ephemeral: true })
-                                process.exit()
+                                await interaction.reply({ content: "¡Los comandos se reiniciaron con éxito!", ephemeral: true })
+                                break
                             case "destroy":
                                 await command_list.functions.destroy(client, interaction.user)
-                                await interaction.reply({ content: "Client destroyed successfully!", ephemeral: true })
+                                await interaction.reply({ content: "¡El proceso fue terminado con éxito!", ephemeral: true })
+                                process.exit(1)
                         }
                         break
                 }

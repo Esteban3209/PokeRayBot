@@ -3,7 +3,7 @@ const axios = require("axios")
 const deploy_commands_structure = {
     "type": 1,
     "name": "deploy_commands",
-    "description": "Refreshes all guild commands and permissions",
+    "description": "Refezca todos los comandos del servidor junto con sus permisos",
     "default_member_permissions": "0"
 }
 

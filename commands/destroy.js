@@ -1,7 +1,7 @@
 const destroy_structure = {
     "type": 1,
     "name": "destroy",
-    "description": "Destoys the client and makes the bot log out",
+    "description": "Termina el proceso principal",
     "default_member_permissions": "0"
 }
 
