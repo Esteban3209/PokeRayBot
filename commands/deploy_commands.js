@@ -41,7 +41,7 @@ async function deploy_commands(user) {
                     "Authorization": `Bot ${process.env.BOT_TOKEN}`
                 }
             })
-        } catch(e) {
+        } catch (e) {
             console.error(`Error while registering guild command "${data?.name || "unknown"}" : ${e}`)
             return
         }
