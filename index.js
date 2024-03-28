@@ -1,5 +1,15 @@
 const { Client } = require("discord.js")
 const command_list = require("./commands/command_list")
+const axios = require("axios")
+var UserRecord = {}
+
+async function fetchData() {
+    try {
+        UserRecord = await axios.get(process.env.USER_RECORD_URL)
+    } catch(e) {
+        console.error(`Error while getting the UserRecord : ${e}`)
+    }
+}
 
 const client = new Client({intents: ["GuildBans", "GuildIntegrations", "GuildInvites", "GuildMembers", "GuildMessageReactions", "GuildMessages", "GuildModeration", "GuildPresences", "GuildScheduledEvents", "GuildVoiceStates", "Guilds", "MessageContent"], partials: [ 0, 1, 2, 3, 4 ]})
 
@@ -22,7 +32,6 @@ client.on('interactionCreate', async (interaction) => {
                             case "deploy_commands":
                                 await command_list.functions.deploy_commands(interaction.user)
                                 await interaction.reply({ content: "¡Los comandos se reiniciaron con éxito!", ephemeral: true })
-                                await interaction.channel.send('Process acknowledged')
                                 break
                             case "destroy":
                                 await command_list.functions.destroy(client, interaction.user)
@@ -30,6 +39,11 @@ client.on('interactionCreate', async (interaction) => {
                                 process.exit()
                         }
                         break
+                    case 2: 
+                        switch (interaction.commandName) {
+                            case "Warn User":
+                                await command_list.functions.open_modal(interaction, interaction.targetUser)
+                        }
                 }
                 break
         }
@@ -38,4 +52,6 @@ client.on('interactionCreate', async (interaction) => {
     }
 })
 
-client.login(process.env.BOT_TOKEN)
+fetchData().then(() => {
+    client.login(process.env.BOT_TOKEN)
+})
