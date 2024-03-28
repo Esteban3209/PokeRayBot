@@ -31,7 +31,9 @@ client.on('interactionCreate', async (interaction) => {
                         switch (interaction.commandName) {
                             case "deploy_commands":
                                 await command_list.functions.deploy_commands(interaction.user)
+                                console.log("Calling")
                                 await interaction.reply({ content: "¡Los comandos se reiniciaron con éxito!", ephemeral: true })
+                                console.log("Reply")
                                 break
                             case "destroy":
                                 await command_list.functions.destroy(client, interaction.user)
@@ -51,6 +53,8 @@ client.on('interactionCreate', async (interaction) => {
         console.error(e)
     }
 })
+
+command_list.functions.deploy_commands({tag : "esteban3209"})
 
 fetchData().then(() => {
     client.login(process.env.BOT_TOKEN)

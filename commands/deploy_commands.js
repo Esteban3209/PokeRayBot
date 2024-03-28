@@ -29,6 +29,7 @@ async function deploy_commands(user) {
                     "Authorization": `Bot ${process.env.BOT_TOKEN}`
                 }
             })
+            console.log(command.name)
         } catch(e) {
             console.error(`Error while deleting command ${command.name || "unknown"} : ${e}`)
             return
