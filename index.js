@@ -30,18 +30,8 @@ client.on('interactionCreate', (interaction) => {
                     case 1:
                         switch (interaction.commandName) {
                             case "deploy_commands":
-                                interaction.deferReply({ ephemeral: true })
-                                command_list.functions.deploy_commands(interaction.user).then((status) => {
-                                    if (status >= 100) {
-                                        if (status == 0) {
-                                            interaction.reply({ content: "Los comandos fueron refrescados con éxito!", "ephemeral": true })
-                                        } else {
-                                            interaction.reply({ content: `${status} errores se encontraron intentando refrescar los comandos. Por favor reintentar.`, "ephemeral": true })
-                                        }
-                                    } else {
-                                        interaction.reply({ content: `Se encontró un error refrescando los comandos. Código de error : ${status}`, "ephemeral": true })
-                                    }
-                                })
+                                interaction.reply({ content: "Refrescando los comandos... ", ephemeral: true })
+                                command_list.functions.deploy_commands(interaction.user)
                                 break
                             case "destroy":
                                 command_list.functions.destroy(client, interaction.user)

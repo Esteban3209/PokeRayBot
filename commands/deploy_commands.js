@@ -22,30 +22,25 @@ async function deploy_commands(user) {
         console.error(`Error while getting the data : error status ${res.status}`)
         return res.status
     }
-    console.log("Deleting previous commands...")
     res.data.forEach(async (command) => {
         if (!command.name == 'deploy_commands') {
             const del = await axios.delete(`${url}/${command.id}`, headers)
             if (!del.status == 400) {
                 console.error(`Error while deleting command ${command.name} : error status ${del.status}`)
-                errors++
             }
         }
     })
     if (!errors == 0) {
-        return errors
+        return
     }
-    console.log(`Posting new commands : ${errors} errors until now`)
     structures.forEach(async (structure) => {
         if (!structure.name == 'deploy_commands') {
             const post = await axios.post(url, structure, headers)
             if (!post.status == 400) {
                 console.error(`Error while posting command ${structure.name} : error status ${post.status}`)
-                errors++
             }
         }
     })
-    console.log(`Finished deploying commands with ${errors} errors`)
     return errors
 }
 
