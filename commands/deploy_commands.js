@@ -11,43 +11,40 @@ async function deploy_commands(user) {
     console.log(`Redeploying commands under orders of ${user.tag}...`)
     const { structures } = require("./command_list")
     const url = "https://discord.com/api/v10/applications/1220175932606779452/guilds/1198673648077262878/commands"
-    var res = {}
-    try { 
-        res = await axios.get(url, {
-            headers: {
-                "Authorization": `Bot ${process.env.BOT_TOKEN}`
-            }
-        })
-    } catch(e) {
-        console.error(`Error while getting the command data : ${e}`)
-        return
+    const headers = {
+        headers : {
+            'Authorization': `Bot ${process.env.BOT_TOKEN}`
+        }
     }
+    var errors = 0
+    var res = await axios.get(url, headers)
+    if (!res.status == 400) {
+        console.error(`Error while getting the data : error status ${res.status}`)
+        return res.status
+    }
+    console.log("Deleting previous commands...")
     res.data.forEach(async (command) => {
-        try {
-            await axios.delete(`${url}/${command.id}`, {
-                headers: {
-                    "Authorization": `Bot ${process.env.BOT_TOKEN}`
-                }
-            })
-            console.log(command.name)
-        } catch(e) {
-            console.error(`Error while deleting command ${command.name || "unknown"} : ${e}`)
-            return
+        if (!command.name == 'deploy_commands') {
+            const del = await axios.delete(`${url}/${command.id}`, headers)
+            if (!del.status == 400) {
+                console.error(`Error while deleting command ${command.name} : error status ${del.status}`)
+                errors++
+            }
         }
     })
-    structures.forEach(async (data) => {
-        try {
-            await axios.post(url, data, {
-                headers: {
-                    "Authorization": `Bot ${process.env.BOT_TOKEN}`
-                }
-            })
-        } catch (e) {
-            console.error(`Error while registering guild command "${data?.name || "unknown"}" : ${e}`)
-            return
+    if (!errors == 0) {
+        return errors
+    }
+    structures.forEach(async (structure) => {
+        if (!structure.name == 'deploy_commands') {
+            const post = await axios.post(url, structure, headers)
+            if (!post.status == 400) {
+                console.error(`Error while posting command ${structure.name} : error status ${post.status}`)
+                errors++
+            }
         }
     })
-    console.log("Commands successfully deployed")
+    return errors
 }
 
 module.exports = {

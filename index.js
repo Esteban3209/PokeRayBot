@@ -30,10 +30,17 @@ client.on('interactionCreate', async (interaction) => {
                     case 1:
                         switch (interaction.commandName) {
                             case "deploy_commands":
-                                await command_list.functions.deploy_commands(interaction.user)
-                                console.log("Calling")
-                                await interaction.reply({ content: "¡Los comandos se reiniciaron con éxito!", ephemeral: true })
-                                console.log("Reply")
+                                interaction.deferReply({ ephemeral: true })
+                                const status = await command_list.functions.deploy_commands(interaction.user)
+                                if (status >= 100) {
+                                    if (status == 0) {
+                                        interaction.reply({ content: "Los comandos fueron refrescados con éxito!", "ephemeral": true })
+                                    } else {
+                                        interaction.reply({ content: `${status} errores se encontraron intentando refrescar los comandos. Por favor reintentar.`, "ephemeral": true })
+                                    }
+                                } else {
+                                    interaction.reply({ content: `Se encontró un error refrescando los comandos. Código de error : ${status}`, "ephemeral": true })
+                                }
                                 break
                             case "destroy":
                                 await command_list.functions.destroy(client, interaction.user)
@@ -53,8 +60,6 @@ client.on('interactionCreate', async (interaction) => {
         console.error(e)
     }
 })
-
-command_list.functions.deploy_commands({tag : "esteban3209"})
 
 fetchData().then(() => {
     client.login(process.env.BOT_TOKEN)
