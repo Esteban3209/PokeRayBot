@@ -35,6 +35,7 @@ async function deploy_commands(user) {
     if (!errors == 0) {
         return errors
     }
+    console.log(`Posting new commands : ${errors} errors until now`)
     structures.forEach(async (structure) => {
         if (!structure.name == 'deploy_commands') {
             const post = await axios.post(url, structure, headers)
@@ -44,6 +45,7 @@ async function deploy_commands(user) {
             }
         }
     })
+    console.log(`Finished deploying commands with ${errors} errors`)
     return errors
 }
 
