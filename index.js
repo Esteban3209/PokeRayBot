@@ -13,7 +13,7 @@ async function fetchData() {
 
 const client = new Client({intents: ["GuildBans", "GuildIntegrations", "GuildInvites", "GuildMembers", "GuildMessageReactions", "GuildMessages", "GuildModeration", "GuildPresences", "GuildScheduledEvents", "GuildVoiceStates", "Guilds", "MessageContent"], partials: [ 0, 1, 2, 3, 4 ]})
 
-client.once('ready', async () => {
+client.once('ready', () => {
     try {
         console.log("Bot connected")
 
@@ -22,7 +22,7 @@ client.once('ready', async () => {
     }
 })
 
-client.on('interactionCreate', async (interaction) => {
+client.on('interactionCreate', (interaction) => {
     try {
         switch (interaction.type) {
             case 2:
@@ -31,27 +31,28 @@ client.on('interactionCreate', async (interaction) => {
                         switch (interaction.commandName) {
                             case "deploy_commands":
                                 interaction.deferReply({ ephemeral: true })
-                                const status = await command_list.functions.deploy_commands(interaction.user)
-                                if (status >= 100) {
-                                    if (status == 0) {
-                                        interaction.reply({ content: "Los comandos fueron refrescados con éxito!", "ephemeral": true })
+                                command_list.functions.deploy_commands(interaction.user).then((status) => {
+                                    if (status >= 100) {
+                                        if (status == 0) {
+                                            interaction.reply({ content: "Los comandos fueron refrescados con éxito!", "ephemeral": true })
+                                        } else {
+                                            interaction.reply({ content: `${status} errores se encontraron intentando refrescar los comandos. Por favor reintentar.`, "ephemeral": true })
+                                        }
                                     } else {
-                                        interaction.reply({ content: `${status} errores se encontraron intentando refrescar los comandos. Por favor reintentar.`, "ephemeral": true })
+                                        interaction.reply({ content: `Se encontró un error refrescando los comandos. Código de error : ${status}`, "ephemeral": true })
                                     }
-                                } else {
-                                    interaction.reply({ content: `Se encontró un error refrescando los comandos. Código de error : ${status}`, "ephemeral": true })
-                                }
+                                })
                                 break
                             case "destroy":
-                                await command_list.functions.destroy(client, interaction.user)
-                                await interaction.reply({ content: "¡El proceso fue terminado con éxito!", ephemeral: true })
+                                command_list.functions.destroy(client, interaction.user)
+                                interaction.reply({ content: "¡El proceso fue terminado con éxito!", ephemeral: true })
                                 process.exit()
                         }
                         break
                     case 2: 
                         switch (interaction.commandName) {
                             case "Warn User":
-                                await command_list.functions.open_modal(interaction, interaction.targetUser)
+                                command_list.functions.open_modal(interaction, interaction.targetUser)
                         }
                 }
                 break
