@@ -27,11 +27,10 @@ async function warn_user(interaction, record) {
             "date": Date.now(),
             "reason": interaction.options.get("reason", true)
         }
-        var newRecord = record
-        if (newRecord[user.id]) {
-            newRecord[user.id].push(warning)
+        if (record[user.id]) {
+            record[user.id].push(warning)
         } else {
-            newRecord[user.id] = [warning]
+            record[user.id] = [warning]
         }
     } catch(e) {
         console.error(`Error while warning a user : ${e}`)
