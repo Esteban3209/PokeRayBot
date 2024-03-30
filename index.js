@@ -46,6 +46,10 @@ client.on('interactionCreate', (interaction) => {
                         }
                 }
                 break
+            case 5:
+                switch (interaction.customId) {
+                    case "WarnModal":
+                }
         }
     } catch(e) {
         console.error(e)

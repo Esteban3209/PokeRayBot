@@ -1,43 +1,46 @@
-const methods = require("../resources/methods")
-
 const warn_user_structure = {
-    "type": 2,
-    "name": "Warn User"
+    "type": 1,
+    "name": "Warn User",
+    "description": "Advierte a un usuario por la ruptura de una regla",
+    "default_member_permissions": 0x2,
+    "options": [
+        {
+            "type": 6,
+            "name": "user",
+            "description": "El usuario al que advertir",
+            "required": true
+        },
+        {
+            "type": 3,
+            "name": "reason",
+            "description": "La razón de la advertencia",
+            "required": true
+        }
+    ]
 }
 
-async function open_modal(interaction, user) {
-    const modal = {
-        "custom_id": "WarnModal",
-        "title": `Warn ${user.tag}`,
-        "components": [
-            {
-                "type": 1,
-                "components": [
-                    {
-                        "type": 4,
-                        "custom_id": "WarnReason",
-                        "style": 2,
-                        "label": "Reason",
-                        "required": true
-                    }
-                ]
-            }
-            
-        ]
-    }
+async function warn_user(interaction, record) {
     try {
-        await interaction.showModal(modal)
+        const user = interaction.options.get("user", true)
+        const warning = {
+            "moderator": interaction.user.tag,
+            "date": Date.now(),
+            "reason": interaction.options.get("reason", true)
+        }
+        var newRecord = record
+        if (newRecord[user.id]) {
+            newRecord[user.id].push(warning)
+        } else {
+            newRecord[user.id] = [warning]
+        }
     } catch(e) {
-        console.error(`Error while displaying modal : ${e}`)
+        console.error(`Error while warning a user : ${e}`)
+        interaction.reply({ content: "Se encontró un error mientras se advertía al usuario.", ephemeral: true })
     }
-}
-
-async function warn_user(interaction, user, record) {
-    
+    interaction.reply({ content: "Se advirió al usuario con éxito.", ephemeral: true })
 }
 
 module.exports = {
     warn_user_structure: warn_user_structure,
-    open_modal: open_modal,
     warn_user: warn_user
 }
