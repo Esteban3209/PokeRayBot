@@ -10,7 +10,7 @@ async function fetchData() {
 
 function updateData() {
     setTimeout(() => {
-        put(process.env.USER_RECORD_URL, UserRecord)
+        console.log(UserRecord)
         updateData()
     }, 180000)
 }
