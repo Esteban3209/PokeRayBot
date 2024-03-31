@@ -28,6 +28,7 @@ async function deploy_commands(user) {
             if (!del.status == 400) {
                 console.error(`Error while deleting command ${command.name} : error status ${del.status}`)
             }
+            console.log(command.name)
         }
     })
     if (!errors == 0) {
