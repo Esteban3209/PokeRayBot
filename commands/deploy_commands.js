@@ -22,6 +22,7 @@ async function deploy_commands(user) {
         console.error(`Error while getting the data : error status ${res.status}`)
         return res.status
     }
+    console.log(res.data)
     res.data.forEach(async (command) => {
         if (!command.name == 'deploy_commands') {
             const del = await axios.delete(`${url}/${command.id}`, headers)
