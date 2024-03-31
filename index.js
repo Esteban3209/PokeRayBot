@@ -1,7 +1,6 @@
 const { Client } = require("discord.js")
 const { patch, put, get } = require("./resources/methods")
 const command_list = require("./commands/command_list")
-const axios = require("axios")
 var UserRecord = {}
 
 async function fetchData() {
@@ -11,6 +10,7 @@ async function fetchData() {
 function updateData() {
     setTimeout(() => {
         console.log(UserRecord)
+        put(process.env.USER_RECORD_URL, UserRecord)
         updateData()
     }, 180000)
 }
