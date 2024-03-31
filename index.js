@@ -11,8 +11,8 @@ async function fetchData() {
 function updateData() {
     setTimeout(() => {
         put(process.env.USER_RECORD_URL, UserRecord)
+        updateData()
     }, 180000)
-    updateData()
 }
 
 const client = new Client({intents: ["GuildBans", "GuildIntegrations", "GuildInvites", "GuildMembers", "GuildMessageReactions", "GuildMessages", "GuildModeration", "GuildPresences", "GuildScheduledEvents", "GuildVoiceStates", "Guilds", "MessageContent"], partials: [ 0, 1, 2, 3, 4 ]})
