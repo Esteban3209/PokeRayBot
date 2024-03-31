@@ -1,6 +1,6 @@
-const warn_user_structure = {
+const warn_structure = {
     "type": 1,
-    "name": "Warn User",
+    "name": "warn",
     "description": "Advierte a un usuario por la ruptura de una regla",
     "default_member_permissions": 0x2,
     "options": [
@@ -19,7 +19,7 @@ const warn_user_structure = {
     ]
 }
 
-async function warn_user(interaction, record) {
+async function warn(interaction, record) {
     try {
         const user = interaction.options.get("user", true)
         const warning = {
@@ -40,6 +40,6 @@ async function warn_user(interaction, record) {
 }
 
 module.exports = {
-    warn_user_structure: warn_user_structure,
-    warn_user: warn_user
+    warn_structure: warn_structure,
+    warn: warn
 }

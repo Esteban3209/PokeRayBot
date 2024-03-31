@@ -1,14 +1,18 @@
 const { Client } = require("discord.js")
+const { patch, put, get } = require("./resources/methods")
 const command_list = require("./commands/command_list")
 const axios = require("axios")
 var UserRecord = {}
 
 async function fetchData() {
-    try {
-        UserRecord = await axios.get(process.env.USER_RECORD_URL)
-    } catch(e) {
-        console.error(`Error while getting the UserRecord : ${e}`)
-    }
+    UserRecord = await get(process.env.USER_RECORD_URL)
+}
+
+function updateData() {
+    setTimeout(() => {
+        put(process.env.USER_RECORD_URL, UserRecord)
+    }, 180000)
+    updateData()
 }
 
 const client = new Client({intents: ["GuildBans", "GuildIntegrations", "GuildInvites", "GuildMembers", "GuildMessageReactions", "GuildMessages", "GuildModeration", "GuildPresences", "GuildScheduledEvents", "GuildVoiceStates", "Guilds", "MessageContent"], partials: [ 0, 1, 2, 3, 4 ]})
@@ -37,18 +41,16 @@ client.on('interactionCreate', (interaction) => {
                                 command_list.functions.destroy(client, interaction.user)
                                 interaction.reply({ content: "¡El proceso fue terminado con éxito!", ephemeral: true })
                                 process.exit()
+                            case "warn":
+                                command_list.functions.warn(interaction, UserRecord)
+                                break
                         }
                         break
-                    case 2: 
-                        switch (interaction.commandName) {
-                            case "Warn User":
-                                command_list.functions.open_modal(interaction, interaction.targetUser)
-                        }
                 }
                 break
             case 5:
                 switch (interaction.customId) {
-                    case "WarnModal":
+                    
                 }
         }
     } catch(e) {
@@ -56,6 +58,9 @@ client.on('interactionCreate', (interaction) => {
     }
 })
 
+
+
 fetchData().then(() => {
     client.login(process.env.BOT_TOKEN)
+    updateData()
 })
