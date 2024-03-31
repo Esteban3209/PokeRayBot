@@ -26,7 +26,7 @@ client.once('ready', () => {
     }
 })
 
-client.on('interactionCreate', (interaction) => {
+client.on('interactionCreate', async (interaction) => {
     try {
         switch (interaction.type) {
             case 2:
@@ -34,7 +34,7 @@ client.on('interactionCreate', (interaction) => {
                     case 1:
                         switch (interaction.commandName) {
                             case "deploy_commands":
-                                interaction.reply({ content: "Refrescando los comandos... ", ephemeral: true })
+                                await interaction.reply({ content: "Refrescando los comandos... ", ephemeral: true })
                                 command_list.functions.deploy_commands(interaction.user)
                                 break
                             case "destroy":
