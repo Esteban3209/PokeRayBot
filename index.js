@@ -4,7 +4,7 @@ const command_list = require("./commands/command_list")
 var UserRecord = {}
 
 async function fetchData() {
-    UserRecord = await get(process.env.USER_RECORD_URL)
+    UserRecord = await get(process.env.USER_RECORD_URL).data
 }
 
 function updateData() {
