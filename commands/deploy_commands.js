@@ -16,7 +16,6 @@ async function deploy_commands(user) {
             'Authorization': `Bot ${process.env.BOT_TOKEN}`
         }
     }
-    var errors = 0
     var res = await axios.get(url, headers)
     if (!res.status == 400) {
         console.error(`Error while getting the data : error status ${res.status}`)
@@ -24,6 +23,7 @@ async function deploy_commands(user) {
     }
     console.log(res.data)
     res.data.forEach(async (command) => {
+        console.log(command.name)
         if (!command.name == 'deploy_commands') {
             const del = await axios.delete(`${url}/${command.id}`, headers)
             if (!del.status == 400) {
@@ -32,9 +32,6 @@ async function deploy_commands(user) {
             console.log(command.name)
         }
     })
-    if (!errors == 0) {
-        return
-    }
     structures.forEach(async (structure) => {
         if (!structure.name == 'deploy_commands') {
             const post = await axios.post(url, structure, headers)
