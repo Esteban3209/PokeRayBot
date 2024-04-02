@@ -7,8 +7,8 @@ const deploy_commands_structure = {
     "default_member_permissions": "0"
 }
 
-async function deploy_commands(user) {
-    console.log(`Redeploying commands under orders of ${user.tag}...`)
+async function deploy_commands() {
+    console.log(`Redeploying commands...`)
     const { structures } = require("./command_list")
     const url = "https://discord.com/api/v10/applications/1220175932606779452/guilds/1198673648077262878/commands"
     const headers = {

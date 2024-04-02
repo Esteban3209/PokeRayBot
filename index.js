@@ -4,7 +4,7 @@ const command_list = require("./commands/command_list")
 var UserRecord = {}
 
 async function fetchData() {
-    UserRecord = await get(process.env.USER_RECORD_URL).data
+    UserRecord = await get(process.env.USER_RECORD_URL)
 }
 
 function updateData() {
@@ -35,7 +35,7 @@ client.on('interactionCreate', (interaction) => {
                         switch (interaction.commandName) {
                             case "deploy_commands":
                                 interaction.reply({ content: "Refrescando los comandos... ", ephemeral: true }).then(() => {
-                                    command_list.functions.deploy_commands(interaction.user)
+                                    command_list.functions.deploy_commands()
                                 })
                                 break
                             case "destroy":
