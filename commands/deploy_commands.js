@@ -34,6 +34,7 @@ async function deploy_commands() {
         }
     })
     structures.forEach(async (structure) => {
+        console.log(structure.name)
         if (!structure.name == 'deploy_commands') {
             const post = await axios.post(url, structure, headers)
             if (!post.status == 400) {
