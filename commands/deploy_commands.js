@@ -24,7 +24,8 @@ async function deploy_commands() {
     console.log(res.data)
     res.data.forEach(async (command) => {
         console.log(command.name)
-        if (!command.name == 'deploy_commands') {
+        console.log(!command.name == 'deploy_commands')
+        if (command.name != 'deploy_commands') {
             console.log(command.name)
             const del = await axios.delete(`${url}/${command.id}`, headers)
             console.log(`del = ${del}<}`)
@@ -35,7 +36,7 @@ async function deploy_commands() {
     })
     structures.forEach(async (structure) => {
         console.log(structure.name)
-        if (!structure.name == 'deploy_commands') {
+        if (structure.name != 'deploy_commands') {
             const post = await axios.post(url, structure, headers)
             if (!post.status == 400) {
                 console.error(`Error while posting command ${structure.name} : error status ${post.status}`)
