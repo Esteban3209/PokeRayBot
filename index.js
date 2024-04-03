@@ -1,15 +1,17 @@
 const { Client } = require("discord.js")
 const { patch, put, get } = require("./resources/methods")
+const { axios } = require("axios")
 const command_list = require("./commands/command_list")
 var UserRecord = {}
 
 async function fetchData() {
-    UserRecord = await get(process.env.USER_RECORD_URL)
+    UserRecord = await axios.get(process.env.USER_RECORD_URL)
+    console.log(UserRecord)
 }
 
 function updateData() {
     setTimeout(() => {
-        console.log(UserRecord)
+        
         put(process.env.USER_RECORD_URL, { "i": 1 })
         updateData()
     }, 180000)
