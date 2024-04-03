@@ -25,11 +25,12 @@ async function deploy_commands() {
     res.data.forEach(async (command) => {
         console.log(command.name)
         if (!command.name == 'deploy_commands') {
+            console.log(command.name)
             const del = await axios.delete(`${url}/${command.id}`, headers)
+            console.log(del)
             if (!del.status == 400) {
                 console.error(`Error while deleting command ${command.name} : error status ${del.status}`)
             }
-            console.log(command.name)
         }
     })
     structures.forEach(async (structure) => {
@@ -40,7 +41,6 @@ async function deploy_commands() {
             }
         }
     })
-    return errors
 }
 
 module.exports = {
