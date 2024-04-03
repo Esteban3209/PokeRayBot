@@ -1,6 +1,6 @@
 const { Client } = require("discord.js")
 const { patch, put, get } = require("./resources/methods")
-const { axios } = require("axios")
+const axios = require("axios")
 const command_list = require("./commands/command_list")
 var UserRecord = {}
 
