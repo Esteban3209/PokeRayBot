@@ -27,7 +27,7 @@ async function deploy_commands() {
         if (!command.name == 'deploy_commands') {
             console.log(command.name)
             const del = await axios.delete(`${url}/${command.id}`, headers)
-            console.log(del)
+            console.log(`del = ${del}<}`)
             if (!del.status == 400) {
                 console.error(`Error while deleting command ${command.name} : error status ${del.status}`)
             }
