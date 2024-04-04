@@ -22,16 +22,19 @@ const warn_structure = {
 async function warn(interaction, record) {
     try {
         const user = interaction.options.get("user", true).user
+        const moderator = interaction.user.tag
+        const reason = interaction.options.get("reason", true).value
         const warning = {
-            "moderator": interaction.user.tag,
+            "moderator": moderator,
             "date": Date.now(),
-            "reason": interaction.options.get("reason", true).value
+            "reason": reason
         }
         if (record[user.id]) {
             record[user.id].push(warning)
         } else {
             record[user.id] = [warning]
         }
+        await user.send({ content: `Fuiste advertido en ${interaction.guild.name} por ${moderator}.\nRazón : ${reason}` })
     } catch(e) {
         console.error(`Error while warning a user : ${e}`)
         interaction.reply({ content: "Se encontró un error mientras se advertía al usuario.", ephemeral: true })
