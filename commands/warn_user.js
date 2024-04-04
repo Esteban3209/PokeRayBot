@@ -21,11 +21,11 @@ const warn_structure = {
 
 async function warn(interaction, record) {
     try {
-        const user = interaction.options.get("user", true)
+        const user = interaction.options.get("user", true).user
         const warning = {
             "moderator": interaction.user.tag,
             "date": Date.now(),
-            "reason": interaction.options.get("reason", true)
+            "reason": interaction.options.get("reason", true).value
         }
         if (record[user.id]) {
             record[user.id].push(warning)
