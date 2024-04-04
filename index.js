@@ -4,14 +4,13 @@ const command_list = require("./commands/command_list")
 var UserRecord = {}
 
 async function fetchData() {
-    UserRecord = await get(process.env.USER_RECORD_URL)
+    const res = await get(process.env.USER_RECORD_URL)
+    UserRecord = res.data
 }
 
 function updateData() {
     setTimeout(() => {
-        console.log(UserRecord)
-        console.log(UserRecord.data)
-        put(process.env.USER_RECORD_URL, { "i": "1" })
+        put(process.env.USER_RECORD_URL, UserRecord)
         updateData()
     }, 180000)
 }
