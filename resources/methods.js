@@ -11,13 +11,10 @@ async function getData(url) {
 }
 
 async function putData(url, content, headers = { headers: {'Content-Type': 'application/json'} }) {
-    try {
-        var res = await axios.put(url, content, headers)
-        return res
 
-    } catch (e) {
-        console.log(`Error while putting the data : ${e}`)
-    }
+        var res = await axios.put(url, content, headers)
+        console.log(res)
+
 }
 
 async function patchData(url, content, headers = { headers: {'Content-Type': 'application/json'} }) {
