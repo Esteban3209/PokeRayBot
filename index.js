@@ -39,8 +39,9 @@ client.on('interactionCreate', (interaction) => {
                                 })
                                 break
                             case "destroy":
-                                command_list.functions.destroy(client, interaction.user)
-                                interaction.reply({ content: "¡El proceso fue terminado con éxito!", ephemeral: true })
+                                interaction.reply({ content: "El proceso fue terminado con éxito.", ephemeral: true }).then(() => {
+                                    command_list.functions.destroy(client, interaction.user)
+                                })
                                 process.exit()
                             case "warn":
                                 command_list.functions.warn(interaction, UserRecord)
