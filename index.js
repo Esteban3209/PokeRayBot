@@ -1,6 +1,7 @@
 const { Client, User } = require("discord.js")
 const { patch, put, get } = require("./resources/methods")
 const command_list = require("./commands/command_list")
+const express = require("express")
 var UserRecord = {}
 
 async function fetchData() {
@@ -16,6 +17,15 @@ function updateData() {
 }
 
 const client = new Client({intents: ["GuildBans", "GuildIntegrations", "GuildInvites", "GuildMembers", "GuildMessageReactions", "GuildMessages", "GuildModeration", "GuildPresences", "GuildScheduledEvents", "GuildVoiceStates", "Guilds", "MessageContent"], partials: [ 0, 1, 2, 3, 4 ]})
+const web = express()
+
+web.get('/', (req, res) => {
+    res.send("Bot is alive")
+})
+
+web.listen(10000, () => {
+    console.log("Web server listening on port 10000")
+})
 
 client.once('ready', () => {
     try {
