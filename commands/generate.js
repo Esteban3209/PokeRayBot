@@ -31,7 +31,7 @@ async function generate(interaction) {
             interaction.reply({ content: "No puede enviarse un mensaje vacío...", ephemeral : true })
             return
         }
-        await interaction.channel.send({ content: content?.value || "", embeds: JSON.parse(embeds?.value || ""), components: JSON.parse(components?.value || "") })
+        await interaction.channel.send({ content: content?.value || "{}", embeds: JSON.parse(embeds?.value || "{}"), components: JSON.parse(components?.value || "{}") })
     } catch(e) {
         console.error(`Error while generating message : ${e}`)
         interaction.reply({ content: "Algo salió mal generando el mensaje...", ephemeral: true })
