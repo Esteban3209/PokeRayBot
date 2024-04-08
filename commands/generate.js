@@ -24,9 +24,9 @@ const generate_structure = {
 
 async function generate(interaction) {
     try {
-        const content = interaction.options.get("content").value
-        const embeds = interaction.options.get("embeds").value
-        const components = interaction.options.get("components").value
+        const content = interaction.options.get("content")?.value
+        const embeds = interaction.options.get("embeds")?.value
+        const components = interaction.options.get("components")?.value
         if (!(content || embeds || components)) {
             interaction.reply({ content: "No puede enviarse un mensaje vacío...", ephemeral : true })
             return
