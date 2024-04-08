@@ -24,14 +24,14 @@ const generate_structure = {
 
 async function generate(interaction) {
     try {
-        const content = interaction.options.get("content")?.value
-        const embeds = interaction.options.get("embeds")?.value
-        const components = interaction.options.get("components")?.value
+        const content = interaction.options.get("content")
+        const embeds = interaction.options.get("embeds")
+        const components = interaction.options.get("components")
         if (!(content || embeds || components)) {
             interaction.reply({ content: "No puede enviarse un mensaje vacío...", ephemeral : true })
             return
         }
-        await interaction.channel.send({ content: content || "", embeds: JSON.parse(embeds) || "", components: JSON.parse(components) || "" })
+        await interaction.channel.send({ content: content?.value || "", embeds: JSON.parse(embeds?.value || ""), components: JSON.parse(components?.value || "") })
     } catch(e) {
         console.error(`Error while generating message : ${e}`)
         interaction.reply({ content: "Algo salió mal generando el mensaje...", ephemeral: true })
