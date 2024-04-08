@@ -17,7 +17,7 @@ async function deploy_commands() {
         }
     }
     var res = await axios.get(url, headers)
-    if (res.status != 400) {
+    if (res.status != 200) {
         console.error(`Error while getting the data : error status ${res.status}`)
         return
     }
