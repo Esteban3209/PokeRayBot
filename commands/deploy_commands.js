@@ -17,7 +17,7 @@ async function deploy_commands() {
         }
     }
     var res = await axios.get(url, headers)
-    if (res.status != 200) {
+    if (res.status >= 300) {
         console.error(`Error while getting the data : error status ${res.status}`)
         return
     }
@@ -26,7 +26,7 @@ async function deploy_commands() {
         if (command.name != 'deploy_commands') {
             const del = await axios.delete(`${url}/${command.id}`, headers)
             console.log(`del = ${del}<}`)
-            if (del.status != 400) {
+            if (del.status >= 300) {
                 console.error(`Error while deleting command ${command.name} : error status ${del.status}`)
             }
         }
@@ -34,7 +34,7 @@ async function deploy_commands() {
     structures.forEach(async (structure) => {
         if (structure.name != 'deploy_commands') {
             const post = await axios.post(url, structure, headers)
-            if (post.status != 400) {
+            if (post.status >= 300) {
                 console.error(`Error while posting command ${structure.name} : error status ${post.status}`)
             }
         }
