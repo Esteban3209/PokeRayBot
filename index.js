@@ -1,4 +1,4 @@
-const { Client, User } = require("discord.js")
+const { Client } = require("discord.js")
 const { patch, put, get } = require("./resources/methods")
 const command_list = require("./commands/command_list")
 const express = require("express")
@@ -55,6 +55,9 @@ client.on('interactionCreate', (interaction) => {
                                 process.exit()
                             case "warn":
                                 command_list.functions.warn(interaction, UserRecord)
+                                break
+                            case "generate":
+                                command_list.functions.generate(interaction)
                                 break
                         }
                         break

@@ -2,7 +2,7 @@ const destroy_structure = {
     "type": 1,
     "name": "destroy",
     "description": "Termina el proceso principal",
-    "default_member_permissions": "0"
+    "default_member_permissions": 0
 }
 
 async function destroy(client, user) {

@@ -4,7 +4,7 @@ const deploy_commands_structure = {
     "type": 1,
     "name": "deploy_commands",
     "description": "Refezca todos los comandos del servidor junto con sus permisos",
-    "default_member_permissions": "0"
+    "default_member_permissions": 0
 }
 
 async function deploy_commands() {

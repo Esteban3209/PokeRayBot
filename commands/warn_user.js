@@ -35,11 +35,11 @@ async function warn(interaction, record) {
             record[user.id] = [warning]
         }
         await user.send({ content: `Fuiste advertido en ${interaction.guild.name} por ${moderator}.\nRazón : ${reason}` })
+        interaction.reply({ content: "Se advirió al usuario con éxito.", ephemeral: true })
     } catch(e) {
         console.error(`Error while warning a user : ${e}`)
         interaction.reply({ content: "Se encontró un error mientras se advertía al usuario.", ephemeral: true })
     }
-    interaction.reply({ content: "Se advirió al usuario con éxito.", ephemeral: true })
 }
 
 module.exports = {
