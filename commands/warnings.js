@@ -16,7 +16,11 @@ const warnings_structure = {
 async function warnings(interaction, record) {
     try {
         const user = interaction.options.get("user")
-        const warnings = record[user.id]
+        const warnings = record[`${user.id}`]
+        if (!warnings) {
+            await interaction.reply({ content: "Este usuario no tiene advertencias" })
+            return
+        }
         const map = warnings.map((warning) => {
             return `**Moderador**: ${warning.moderator}\n**Razón**: ${warning.reason}\n**Fecha**: <t:${warning.date}>`
         }).join("\n\n")
@@ -28,7 +32,7 @@ async function warnings(interaction, record) {
         }
         interaction.reply({ embeds: [embed] })
     } catch(e) {
-        console.error(e)
+        console.error(`Error while showing warnings : ${e}`)
         interaction.reply({ content: "Se encontró un error mostrando las advertencias...", ephemeral: true })
     }
 }
