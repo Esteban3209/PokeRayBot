@@ -59,6 +59,9 @@ client.on('interactionCreate', (interaction) => {
                             case "generate":
                                 command_list.functions.generate(interaction)
                                 break
+                            case "warnings":
+                                command_list.functions.warnings(interaction, UserRecord)
+                                break
                         }
                         break
                 }
