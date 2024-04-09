@@ -28,7 +28,7 @@ async function warnings(interaction, record) {
             "title": `Advertencias de ${user.tag}`,
             "type": "rich",
             "description": map,
-            "color": "#ff0000",
+            "color": 0xFF0000,
         }
         interaction.reply({ embeds: [embed] })
     } catch(e) {
