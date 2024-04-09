@@ -15,7 +15,7 @@ const warnings_structure = {
 
 async function warnings(interaction, record) {
     try {
-        const user = interaction.options.get("user")
+        const user = interaction.options.get("user", true).value
         const warnings = record[`${user.id}`]
         if (!warnings) {
             await interaction.reply({ content: "Este usuario no tiene advertencias" })
