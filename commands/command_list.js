@@ -1,6 +1,6 @@
 const { deploy_commands_structure, deploy_commands } = require("./deploy_commands")
 const { destroy_structure, destroy } = require("./destroy")
-const { warn_structure, warn } = require("./warn_user")
+const { warn_structure, warn } = require("./warn")
 const { generate_structure, generate } = require("./generate")
 
 module.exports = {

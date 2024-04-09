@@ -35,7 +35,7 @@ async function generate(interaction) {
         interaction.reply("El mensaje fue generado con éxito.")
     } catch(e) {
         console.error(`Error while generating message : ${e}`)
-        interaction.reply({ content: "Algo salió mal generando el mensaje...", ephemeral: true })
+        interaction.reply({ content: "Se encontró un error generando el mensaje...", ephemeral: true })
     }
 }
 
