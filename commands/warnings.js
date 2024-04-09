@@ -22,7 +22,7 @@ async function warnings(interaction, record) {
             return
         }
         const map = warnings.map((warning) => {
-            return `**Moderador**: ${warning.moderator}\n**Razón**: ${warning.reason}\n**Fecha**: <t:${warning.date}>`
+            return `**Moderador**: ${warning.moderator}\n**Razón**: ${warning.reason}\n**Fecha**: <t:${warning.date}:R>`
         }).join("\n\n")
         const embed = {
             "title": `Advertencias de ${user.tag}`,
