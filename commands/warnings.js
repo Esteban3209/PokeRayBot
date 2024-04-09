@@ -18,11 +18,22 @@ async function warnings(interaction, record) {
         const user = interaction.options.get("user")
         const warnings = record[user.id]
         const map = warnings.map((warning) => {
-            warning 
-        })
-        
+            return `**Moderador**: ${warning.moderator}\n**Razón**: ${warning.reason}\n**Fecha**: <t:${warning.date}>`
+        }).join("\n\n")
+        const embed = {
+            "title": `Advertencias de ${user.tag}`,
+            "type": "rich",
+            "description": map,
+            "color": "#ff0000",
+        }
+        interaction.reply({ embeds: [embed] })
     } catch(e) {
         console.error(e)
         interaction.reply({ content: "Se encontró un error mostrando las advertencias...", ephemeral: true })
     }
+}
+
+module.exports = {
+    warnings_structure: warnings_structure,
+    warnings: warnings
 }
