@@ -3,23 +3,18 @@ const suggest_modal_structure = {
     "title": "Sugerir...",
     "components": [
         {
-            "type": 1,
-            "components": [
-                {
-                    "type": 4,
-                    "custom_id": "title",
-                    "label": "Título",
-                    "style": 1,
-                    "required": false,
-                    "placeholder": "Un título interesante para una sugerencia..."
-                },
-                {
-                    "type": 4,
-                    "custom_id": "content",
-                    "label": "Contenido",
-                    "style": 2
-                }
-            ]
+            "type": 4,
+            "custom_id": "title",
+            "label": "Título",
+            "style": 1,
+            "required": false,
+            "placeholder": "Un título interesante para una sugerencia..."
+        },
+        {
+            "type": 4,
+            "custom_id": "content",
+            "label": "Contenido",
+            "style": 2
         }
     ]
 }
