@@ -14,6 +14,17 @@ const suggest_modal_structure = {
                     "placeholder": "Un título interesante para una sugerencia..."
                 }
             ]
+        },
+        {
+            "type": 1,
+            "components": [
+                {
+                    "type": 4,
+                    "custom_id": "content",
+                    "label": "Contenido",
+                    "style": 2
+                }
+            ]
         }
     ]
 }
