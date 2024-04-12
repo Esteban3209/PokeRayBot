@@ -1,6 +1,7 @@
 const { Client } = require("discord.js")
 const { patch, put, get } = require("./resources/methods")
-const command_list = require("./commands/command_list")
+const command_list = require("./interactions/commands/command_list")
+const component_list = require("./interactions/components/components_list")
 const express = require("express")
 var UserRecord = {}
 
@@ -66,9 +67,25 @@ client.on('interactionCreate', (interaction) => {
                         break
                 }
                 break
+            case 3:
+                switch (interaction.componentType) {
+                    case 2:
+                        switch (interaction.customId) {
+                            case "suggest_button":
+                                component_list.functions.suggest_button(interaction)
+                                break
+                            case "report_button":
+                                
+                                break
+                        }
+                        break
+                }
             case 5:
                 switch (interaction.customId) {
-                    
+                    case "suggest":
+                        break
+                    case "":
+                        break
                 }
         }
     } catch(e) {
