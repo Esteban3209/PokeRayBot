@@ -2,6 +2,7 @@ const { Client } = require("discord.js")
 const { patch, put, get } = require("./resources/methods")
 const command_list = require("./interactions/commands/command_list")
 const component_list = require("./interactions/components/components_list")
+const modal_list = require("./interactions/modals/modal_list")
 const express = require("express")
 var UserRecord = {}
 
@@ -82,9 +83,11 @@ client.on('interactionCreate', (interaction) => {
                 }
             case 5:
                 switch (interaction.customId) {
-                    case "suggest":
+                    case "suggest_modal":
+                        modal_list.functions.suggest_modal(interaction, client)
                         break
-                    case "":
+                    case "report_modal":
+                        modal_list.functions.report_modal(interaction, client)
                         break
                 }
         }

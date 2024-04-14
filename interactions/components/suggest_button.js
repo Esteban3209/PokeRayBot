@@ -1,7 +1,12 @@
-const { suggest_modal_structure } = require("../modals/suggest_modal")
+const modal_list = require("../modals/modal_list")
 
 async function suggest_button(interaction) {
-    interaction.showModal(suggest_modal_structure)
+    try {
+        interaction.showModal(modal_list.structures.suggest_modal_structure)
+    } catch(e) {
+        console.error(`Error while showing modal : ${e}`)
+        interaction.reply({ content: "Se encontró un error respondiendo a la interacción... Inténtalo de nuevo más tarde.", ephemeral: true })
+    }
 }
 
 module.exports = {

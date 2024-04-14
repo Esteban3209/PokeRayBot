@@ -32,7 +32,7 @@ async function generate(interaction) {
             return
         }
         await interaction.channel.send({ content: content?.value || "", embeds: JSON.parse(embeds?.value || "[]"), components: JSON.parse(components?.value || "[]") })
-        interaction.reply("El mensaje fue generado con éxito.")
+        interaction.reply({ constent: "El mensaje fue generado con éxito.", ephemeral: true })
     } catch(e) {
         console.error(`Error while generating message : ${e}`)
         interaction.reply({ content: "Se encontró un error generando el mensaje...", ephemeral: true })

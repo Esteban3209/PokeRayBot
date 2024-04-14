@@ -1,6 +1,6 @@
-const suggest_modal_structure = {
-    "custom_id": "suggest_modal",
-    "title": "Sugerir...",
+const report_modal_structure = {
+    "custom_id": "report_modal",
+    "title": "Reportar...",
     "components": [
         {
             "type": 1,
@@ -11,7 +11,7 @@ const suggest_modal_structure = {
                     "label": "Título",
                     "style": 1,
                     "required": false,
-                    "placeholder": "Un título interesante para una sugerencia..."
+                    "placeholder": "Bug sobre... / Ruptura de la regla X..."
                 }
             ]
         },
@@ -23,14 +23,14 @@ const suggest_modal_structure = {
                     "custom_id": "content",
                     "label": "Contenido",
                     "style": 2,
-                    "placeholder": "Sugiero que..."
+                    "placeholder": "Encontré un posible bug... / La regla X fue rota por..."
                 }
             ]
         }
     ]
 }
 
-async function suggest_modal() {
+async function report_modal(interaction, client) {
     try {
         const channel = await client.channels.fetch('1228808165781672108')
         const title = interaction.fields.getTextInputValue("title")
@@ -39,7 +39,7 @@ async function suggest_modal() {
             embeds: [
                 {
                     type: "rich",
-                    title: `Sugerencia ${title ? `: ${title}` : ""}`,
+                    title: `Reporte ${title ? `: ${title}` : ""}`,
                     description: content,
                     author: {
                         name: interaction.user.tag,
@@ -56,6 +56,6 @@ async function suggest_modal() {
 }
 
 module.exports = {
-    suggest_modal_structure: suggest_modal_structure,
-    suggest_modal: suggest_modal
+    report_modal_structure: report_modal_structure,
+    report_modal: report_modal
 }
