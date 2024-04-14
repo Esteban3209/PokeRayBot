@@ -30,7 +30,7 @@ const suggest_modal_structure = {
     ]
 }
 
-async function suggest_modal() {
+async function suggest_modal(interaction, client) {
     try {
         const channel = await client.channels.fetch('1228808165781672108')
         const title = interaction.fields.getTextInputValue("title")
@@ -51,7 +51,7 @@ async function suggest_modal() {
         channel.send(message)
     } catch(e) {
         console.error(`Error while responding to a modal : ${e}`)
-        interaction.reply({ content: "Se encontró un error enviando su reporte... Inténtelo de nuevo más tarde.", ephemeral: true })
+        interaction.reply({ content: "Se encontró un error enviando su sugerencia... Inténtelo de nuevo más tarde.", ephemeral: true })
     }
 }
 
