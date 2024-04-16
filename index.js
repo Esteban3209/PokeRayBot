@@ -1,7 +1,7 @@
 const { Client } = require("discord.js")
 const { patch, put, get } = require("./resources/methods")
 const command_list = require("./interactions/commands/command_list")
-const component_list = require("./interactions/components/components_list")
+const component_list = require("./interactions/components/component_list")
 const modal_list = require("./interactions/modals/modal_list")
 const express = require("express")
 var UserRecord = {}

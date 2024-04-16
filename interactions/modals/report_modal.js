@@ -1,3 +1,5 @@
+const component_list = require("../components/component_list")
+
 const report_modal_structure = {
     "custom_id": "report_modal",
     "title": "Reportar...",
@@ -38,17 +40,19 @@ async function report_modal(interaction, client) {
         const message = {
             embeds: [
                 {
-                    type: "rich",
-                    title: `Reporte ${title ? `: ${title}` : ""}`,
-                    description: content,
-                    author: {
-                        name: interaction.user.tag,
-                        icon_url: interaction.user.avatarURL() || null
-                    }
+                    "type": "rich",
+                    "title": `Reporte ${title ? `: ${title}` : ""}`,
+                    "description": content,
+                    "author": {
+                        "name": interaction.user.tag,
+                        "icon_url": interaction.user.avatarURL() || null
+                    },
+                    "timestamp": Date.now()
                 }
             ]
         }
         channel.send(message)
+        interaction.reply({ content: "¡Tu sugerencia se envió con éxito!", ephemeral: true })
     } catch(e) {
         console.error(`Error while responding to a modal : ${e}`)
         interaction.reply({ content: "Se encontró un error enviando su reporte... Inténtelo de nuevo más tarde.", ephemeral: true })
