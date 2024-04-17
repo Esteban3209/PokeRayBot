@@ -1,5 +1,3 @@
-const component_list = require("../components/component_list")
-
 const suggest_modal_structure = {
     "custom_id": "suggest_modal",
     "title": "Sugerir...",
@@ -32,7 +30,7 @@ const suggest_modal_structure = {
     ]
 }
 
-async function suggest_modal(interaction, client) {
+async function suggest_modal(interaction, client, buttons) {
     try {
         const channel = await client.channels.fetch('1228808165781672108')
         const title = interaction.fields.getTextInputValue("title")
@@ -54,6 +52,24 @@ async function suggest_modal(interaction, client) {
                 {
                     type: 1,
                     components: [
+                        {
+                            "type": 2,
+                            "style": 1,
+                            "label": "Conceder",
+                            "custom_id": "concede_button"
+                        },
+                        {
+                            "type": 2,
+                            "style": 4,
+                            "label": "Decline",
+                            "custom_id": "decline_button"
+                        },
+                        {
+                            "type": 2,
+                            "style": 1,
+                            "label": "Escalar",
+                            "custom_id": "scale_button"
+                        }
                     ]
                 }
             ]
@@ -62,7 +78,7 @@ async function suggest_modal(interaction, client) {
         interaction.reply({ content: "¡Tu sugerencia se envió con éxito!", ephemeral: true })
     } catch(e) {
         console.error(`Error while responding to a modal : ${e}`)
-        interaction.reply({ content: `Se encontró un error enviando su sugerencia... Inténtelo de nuevo más tarde. ${JSON.stringify(component_list)}`, ephemeral: true })
+        interaction.reply({ content: "Se encontró un error enviando su sugerencia... Inténtelo de nuevo más tarde.", ephemeral: true })
     }
 }
 
