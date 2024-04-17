@@ -54,9 +54,6 @@ async function suggest_modal(interaction, client) {
                 {
                     type: 1,
                     components: [
-                        component_list.structures.concede_button_structure,
-                        component_list.structures.decline_button_structure,
-                        component_list.structures.scale_button_structure
                     ]
                 }
             ]
