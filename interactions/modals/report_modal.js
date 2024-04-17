@@ -47,7 +47,7 @@ async function report_modal(interaction, client) {
                         "name": interaction.user.tag,
                         "icon_url": interaction.user.avatarURL() || null
                     },
-                    "timestamp": Date.now()
+                    "timestamp": new Date().toISOString()
                 }
             ]
         }

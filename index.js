@@ -96,8 +96,6 @@ client.on('interactionCreate', (interaction) => {
     }
 })
 
-console.log(JSON.stringify(component_list))
-
 fetchData().then(() => {
     client.login(process.env.BOT_TOKEN)
     updateData()

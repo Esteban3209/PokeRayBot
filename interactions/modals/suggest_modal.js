@@ -45,7 +45,7 @@ async function suggest_modal(interaction, client, buttons) {
                         "name": interaction.user.tag,
                         "icon_url": interaction.user.avatarURL() || null
                     },
-                    timestamp: Date.now()
+                    "timestamp": new Date().toISOString()
                 }
             ],
             components: [
