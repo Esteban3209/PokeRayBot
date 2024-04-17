@@ -30,7 +30,7 @@ const suggest_modal_structure = {
     ]
 }
 
-async function suggest_modal(interaction, client, buttons) {
+async function suggest_modal(interaction, client) {
     try {
         const channel = await client.channels.fetch('1228808165781672108')
         const title = interaction.fields.getTextInputValue("title")
@@ -42,7 +42,7 @@ async function suggest_modal(interaction, client, buttons) {
                     "title": `Sugerencia ${title ? `: ${title}` : ""}`,
                     "description": content,
                     "author": {
-                        "name": interaction.user.tag,
+                        "name": interaction.user,
                         "icon_url": interaction.user.avatarURL() || null
                     },
                     "timestamp": new Date().toISOString()
@@ -66,7 +66,7 @@ async function suggest_modal(interaction, client, buttons) {
                         },
                         {
                             "type": 2,
-                            "style": 1,
+                            "style": 2,
                             "label": "Escalar",
                             "custom_id": "scale_button"
                         }

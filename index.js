@@ -76,7 +76,7 @@ client.on('interactionCreate', (interaction) => {
                                 component_list.functions.suggest_button(interaction)
                                 break
                             case "report_button":
-                                
+                                component_list.functions.report_button(interaction)
                                 break
                         }
                         break
