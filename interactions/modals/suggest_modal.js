@@ -65,7 +65,7 @@ async function suggest_modal(interaction, client) {
         interaction.reply({ content: "¡Tu sugerencia se envió con éxito!", ephemeral: true })
     } catch(e) {
         console.error(`Error while responding to a modal : ${e}`)
-        interaction.reply({ content: `Se encontró un error enviando su sugerencia... Inténtelo de nuevo más tarde. ${e}`, ephemeral: true })
+        interaction.reply({ content: `Se encontró un error enviando su sugerencia... Inténtelo de nuevo más tarde. ${component_list}`, ephemeral: true })
     }
 }
 
