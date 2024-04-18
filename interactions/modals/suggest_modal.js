@@ -55,7 +55,7 @@ async function suggest_modal(interaction, client) {
                     components: [
                         {
                             "type": 2,
-                            "style": 1,
+                            "style": 3,
                             "label": "Conceder",
                             "custom_id": "concede_button"
                         },
@@ -67,7 +67,7 @@ async function suggest_modal(interaction, client) {
                         },
                         {
                             "type": 2,
-                            "style": 2,
+                            "style": 1,
                             "label": "Escalar",
                             "custom_id": "scale_button"
                         }

@@ -50,6 +50,31 @@ async function report_modal(interaction, client) {
                     "footer": `User ID : ${interaction.user.id}`,
                     "timestamp": new Date().toISOString()
                 }
+            ],
+            components: [
+                {
+                    type: 1,
+                    components: [
+                        {
+                            "type": 2,
+                            "style": 3,
+                            "label": "Conceder",
+                            "custom_id": "concede_button"
+                        },
+                        {
+                            "type": 2,
+                            "style": 4,
+                            "label": "Decline",
+                            "custom_id": "decline_button"
+                        },
+                        {
+                            "type": 2,
+                            "style": 1,
+                            "label": "Escalar",
+                            "custom_id": "scale_button"
+                        }
+                    ]
+                }
             ]
         }
         channel.send(message)
