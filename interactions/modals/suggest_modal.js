@@ -42,9 +42,10 @@ async function suggest_modal(interaction, client) {
                     "title": `Sugerencia ${title ? `: ${title}` : ""}`,
                     "description": content,
                     "author": {
-                        "name": `${interaction.user}`,
+                        "name": interaction.user.tag,
                         "icon_url": interaction.user.avatarURL() || null
                     },
+                    "footer": `User ID : ${interaction.user.id}`,
                     "timestamp": new Date().toISOString()
                 }
             ],
