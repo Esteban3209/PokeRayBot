@@ -47,7 +47,9 @@ async function report_modal(interaction, client) {
                         "name": interaction.user.tag,
                         "icon_url": interaction.user.avatarURL() || null
                     },
-                    "footer": `User ID : ${interaction.user.id}`,
+                    "footer": {
+                        "text": `User ID : ${interaction.user.id}`
+                    },
                     "timestamp": new Date().toISOString()
                 }
             ],
