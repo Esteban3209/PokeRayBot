@@ -5,7 +5,7 @@ async function scale_button(interaction) {
             name: "ticket-abierto", 
             permissionOverwrites: [{ 
                 id: interaction.message.embeds[0].footer.text.split(" ")[3],
-                allow: 0x40 | 0x800
+                allow: [ 0x40, 0x800 ]
             }] 
         })
         channel.send({ embeds: interaction.message.embeds, components: []  })
