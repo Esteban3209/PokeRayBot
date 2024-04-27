@@ -5,10 +5,9 @@ async function scale_button(interaction) {
             name: "ticket-abierto", 
             permissionOverwrites: [{ 
                 id: interaction.message.embeds[0].footer.text.split(" ")[3],
-                allow: 0x40 | 0x400 | 0x800 | 0x4000 | 0x8000 | 0x10000 | 0x20000 | 0x80000000 | 0x400000000000
+                allow: 0x40008003cc40
             }] 
         })
-        console.log(0x40 | 0x400 | 0x800 | 0x4000 | 0x8000 | 0x10000 | 0x20000 | 0x80000000 | 0x400000000000)
         channel.send({ embeds: interaction.message.embeds, components: []  })
         interaction.reply({ content: "¡El ticket fue escalado con éxito!", ephemeral: true })
     } catch(e) {
