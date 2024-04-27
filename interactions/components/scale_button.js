@@ -8,6 +8,7 @@ async function scale_button(interaction) {
                 allow: 70370891910208
             }] 
         })
+        console.log("b")
         channel.send({ embeds: interaction.message.embeds, components: []  })
         interaction.reply({ content: "¡El ticket fue escalado con éxito!", ephemeral: true })
     } catch(e) {
