@@ -10,6 +10,6 @@ module.exports = {
         report_button: report_button,
         concede_button: concede_button,
         decline_button: decline_button,
-        scale_button: scale_button
+        scale_button: scale_button,
     }
 }

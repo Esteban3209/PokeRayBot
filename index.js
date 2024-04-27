@@ -81,6 +81,21 @@ client.on('interactionCreate', (interaction) => {
                             case "concede_button":
                                 component_list.functions.concede_button(interaction)
                                 break
+                            case "decline_button":
+                                component_list.functions.decline_button(interaction)
+                                break
+                            case "scale_button":
+                                component_list.functions.scale_button(interaction)
+                                break
+                            case "reply_button":
+                                component_list.functions.reply_button(interaction)
+                                break
+                            case "cancel_button":
+                                component_list.functions.cancel_button(interaction)
+                                break
+                            case "announce_button":
+                                component_list.functions.announce_button(interaction)
+                                break
                         }
                         break
                 }
@@ -94,6 +109,7 @@ client.on('interactionCreate', (interaction) => {
                         break
                     case "concede_modal":
                         modal_list.functions.concede_modal(interaction, client)
+                        break
                     
                 }
         }
