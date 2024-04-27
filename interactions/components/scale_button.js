@@ -4,7 +4,7 @@ async function scale_button(interaction) {
             parent: "1216187006812688455", 
             name: "ticket-abierto", 
             permissionOverwrites: [{ 
-                id: interaction.message.embeds[0].footer.text.split(":")[1],
+                id: interaction.message.embeds[0].footer.text.split(" ")[3],
                 allow: 70370891910208
             }] 
         })
