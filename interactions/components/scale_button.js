@@ -1,3 +1,5 @@
+const { PermissionsBitField } = require("discord.js")
+
 async function scale_button(interaction) {
     try {
         const channel = await interaction.guild.channels.create({ 
@@ -5,7 +7,7 @@ async function scale_button(interaction) {
             name: "ticket-abierto", 
             permissionOverwrites: [{ 
                 id: interaction.message.embeds[0].footer.text.split(" ")[3],
-                allow: [0x0000000000000040]
+                allow: PermissionsBitField.Flags.AddReactions
             }] 
         })
         channel.send({ embeds: interaction.message.embeds, components: []  })
