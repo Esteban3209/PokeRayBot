@@ -1,5 +1,3 @@
-const component_list = require("../components/component_list")
-
 const report_modal_structure = {
     "custom_id": "report_modal",
     "title": "Reportar...",
@@ -60,14 +58,14 @@ async function report_modal(interaction, client) {
                         {
                             "type": 2,
                             "style": 3,
-                            "label": "Conceder",
-                            "custom_id": "concede_button"
+                            "label": "Responder",
+                            "custom_id": "reply_button"
                         },
                         {
                             "type": 2,
                             "style": 4,
-                            "label": "Decline",
-                            "custom_id": "decline_button"
+                            "label": "Cancelar",
+                            "custom_id": "cancel_button"
                         },
                         {
                             "type": 2,
