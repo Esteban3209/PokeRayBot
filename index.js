@@ -78,6 +78,9 @@ client.on('interactionCreate', (interaction) => {
                             case "report_button":
                                 component_list.functions.report_button(interaction)
                                 break
+                            case "concede_button":
+                                component_list.functions.concede_button(interaction)
+                                break
                         }
                         break
                 }
@@ -89,6 +92,9 @@ client.on('interactionCreate', (interaction) => {
                     case "report_modal":
                         modal_list.functions.report_modal(interaction, client)
                         break
+                    case "concede_modal":
+                        modal_list.functions.concede_modal(interaction, client)
+                    
                 }
         }
     } catch(e) {

@@ -1,6 +1,6 @@
-const suggest_modal_structure = {
-    "custom_id": "suggest_modal",
-    "title": "Sugerir...",
+const concede_modal_structure = {
+    "custom_id": "concede_modal",
+    "title": "Conceder sugerencia",
     "components": [
         {
             "type": 1,
@@ -10,8 +10,7 @@ const suggest_modal_structure = {
                     "custom_id": "title",
                     "label": "Título",
                     "style": 1,
-                    "required": false,
-                    "placeholder": "Un título interesante para una sugerencia..."
+                    "placeholder": "Título editado de la sugerencia"
                 }
             ]
         },
@@ -21,9 +20,9 @@ const suggest_modal_structure = {
                 {
                     "type": 4,
                     "custom_id": "content",
-                    "label": "Contenido",
+                    "label": "Contenido editado",
                     "style": 2,
-                    "placeholder": "Sugiero que...",
+                    "placeholder": "Contenido editado de la sugerencia",
                     "max_length": 2000
                 }
             ]
@@ -31,23 +30,20 @@ const suggest_modal_structure = {
     ]
 }
 
-async function suggest_modal(interaction, client) {
+async function concede_modal(interaction, client) {
     try {
-        const channel = await client.channels.fetch('1228808165781672108')
-        const title = interaction.fields.getTextInputValue("title")
-        const content = interaction.fields.getTextInputValue("content")
+        const channel = await client.channels.fetch('1233564265726873680')
+        const title = interaction.fields.getTextInputValue("title", true)
+        const content = interaction.fields.getTextInputValue("content", true)
         const message = {
             embeds: [
                 {
                     "type": "rich",
-                    "title": `Sugerencia ${title ? `: ${title}` : ""}`,
+                    "title": title,
                     "description": content,
                     "author": {
                         "name": interaction.user.tag,
                         "icon_url": interaction.user.avatarURL() || null
-                    },
-                    "footer": {
-                        "text": `User ID : ${interaction.user.id}`
                     },
                     "timestamp": new Date().toISOString()
                 }
@@ -59,27 +55,15 @@ async function suggest_modal(interaction, client) {
                         {
                             "type": 2,
                             "style": 3,
-                            "label": "Conceder",
-                            "custom_id": "concede_button"
-                        },
-                        {
-                            "type": 2,
-                            "style": 4,
-                            "label": "Decline",
-                            "custom_id": "decline_button"
-                        },
-                        {
-                            "type": 2,
-                            "style": 1,
-                            "label": "Escalar",
-                            "custom_id": "scale_button"
+                            "label": "Anunciar",
+                            "custom_id": "announce_button"
                         }
                     ]
                 }
             ]
         }
         channel.send(message)
-        interaction.reply({ content: "¡Tu sugerencia se envió con éxito!", ephemeral: true })
+        interaction.reply({ content: "¡La sugerencia fue concedida con éxito!", ephemeral: true })
     } catch(e) {
         console.error(`Error while responding to a modal : ${e}`)
         interaction.reply({ content: "Se encontró un error enviando su sugerencia... Inténtelo de nuevo más tarde.", ephemeral: true })
@@ -87,6 +71,6 @@ async function suggest_modal(interaction, client) {
 }
 
 module.exports = {
-    suggest_modal_structure: suggest_modal_structure,
-    suggest_modal: suggest_modal
+    concede_modal_structure: concede_modal_structure,
+    concede_modal: concede_modal
 }
