@@ -6,7 +6,7 @@ async function concede_button(interaction) {
         if (interaction.message.embeds[0].title != "Sugerencia ") {
             modal_structure.components[0].components[0].value = interaction.message.embeds[0].title
         }
-        modal_structure.components[0].components[1].value = interaction.message.embeds[0].description
+        modal_structure.components[1].components[0].value = interaction.message.embeds[0].description
         interaction.showModal(modal_structure)
     } catch(e) {
         console.error(`Error while showing modal : ${e}`)
