@@ -4,11 +4,16 @@ async function scale_button(interaction) {
     try {
         const channel = await interaction.guild.channels.create({ 
             parent: "1216187006812688455", 
-            name: "ticket-abierto", 
-            permissionOverwrites: [{ 
-                id: interaction.message.embeds[0].footer.text.split(" ")[3],
-                allow: PermissionsBitField.Flags.AddReactions
-            }] 
+            name: "ticket-abierto"
+        })
+        channel.lockPermissions()
+        channel.permissionOverwrites.edit(interaction.message.embeds[0].footer.text.split(" ")[3], {
+            ViewChannel: true,
+            SendMessages: true,
+            EmbedLinks: true,
+            AttachFiles: true,
+            ReadMessageHistory: true,
+            MentionEveryone: true
         })
         channel.send({ embeds: interaction.message.embeds, components: []  })
         interaction.reply({ content: "¡El ticket fue escalado con éxito!", ephemeral: true })
