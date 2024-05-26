@@ -118,6 +118,8 @@ client.on('interactionCreate', (interaction) => {
     }
 })
 
+command_list.functions.deploy_commands()
+
 fetchData().then(() => {
     client.login(process.env.BOT_TOKEN)
     updateData()

@@ -32,7 +32,7 @@ const report_modal_structure = {
 
 async function report_modal(interaction, client) {
     try {
-        const channel = await client.channels.fetch('1228808165781672108')
+        const channel = await client.channels.fetch('1243761012738494494')
         const title = interaction.fields.getTextInputValue("title")
         const content = interaction.fields.getTextInputValue("content")
         const message = {

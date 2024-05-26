@@ -1,9 +1,7 @@
-const { PermissionsBitField } = require("discord.js")
-
 async function scale_button(interaction) {
     try {
         const channel = await interaction.guild.channels.create({ 
-            parent: "1216187006812688455", 
+            parent: "1131819896066555904", 
             name: "ticket-abierto"
         })
         channel.lockPermissions()
@@ -15,7 +13,19 @@ async function scale_button(interaction) {
             ReadMessageHistory: true,
             MentionEveryone: true
         })
-        channel.send({ embeds: interaction.message.embeds, components: []  })
+        channel.send({ embeds: interaction.message.embeds, components: [
+            {
+                type: 1,
+                components: [
+                    {
+                        "type": 2,
+                        "style": 4,
+                        "label": "Cerrar",
+                        "custom_id": "close_button"
+                    }
+                ]
+            }
+        ]})
         interaction.reply({ content: "¡El ticket fue escalado con éxito!", ephemeral: true })
     } catch(e) {
         console.error(`Error while scaling a ticket : ${e}`)

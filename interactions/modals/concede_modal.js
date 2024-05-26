@@ -32,7 +32,7 @@ const concede_modal_structure = {
 
 async function concede_modal(interaction, client) {
     try {
-        const channel = await client.channels.fetch('1233564265726873680')
+        const channel = await client.channels.fetch('1243761119743443005')
         const title = interaction.fields.getTextInputValue("title", true)
         const content = interaction.fields.getTextInputValue("content", true)
         const message = {
