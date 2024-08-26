@@ -1,8 +1,14 @@
 {
   "dependencies": {
+<<<<<<< HEAD
     "axios": "^1.7.5",
     "discord.js": "^14.14.1",
     "express": "^4.19.2",
     "ws": "^8.18.0"
+=======
+    "axios": "^1.6.8",
+    "discord.js": "^14.14.1",
+    "express": "^4.19.2"
+>>>>>>> 2e7b8c1e6b73eb3e8af63dff8af02bd865125a90
   }
 }
