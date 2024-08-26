@@ -4,7 +4,10 @@ const command_list = require("./interactions/commands/command_list")
 const component_list = require("./interactions/components/component_list")
 const modal_list = require("./interactions/modals/modal_list")
 const express = require("express")
+
 var UserRecord = {}
+
+var activePlayerData = {}
 
 async function fetchData() {
     const res = await get(process.env.USER_RECORD_URL)
