@@ -1,8 +1,12 @@
 const { Client } = require("discord.js")
 const { patch, put, get } = require("./resources/methods")
+
 const command_list = require("./interactions/commands/command_list")
 const component_list = require("./interactions/components/component_list")
 const modal_list = require("./interactions/modals/modal_list")
+
+const { openWS } = require("./websocket")
+
 const express = require("express")
 
 var UserRecord = {}
@@ -23,6 +27,8 @@ function updateData() {
 
 const client = new Client({intents: ["GuildBans", "GuildIntegrations", "GuildInvites", "GuildMembers", "GuildMessageReactions", "GuildMessages", "GuildModeration", "GuildPresences", "GuildScheduledEvents", "GuildVoiceStates", "Guilds", "MessageContent"], partials: [ 0, 1, 2, 3, 4 ]})
 const web = express()
+
+openWS()
 
 web.get('/', (req, res) => {
     res.send("Bot is alive")
