@@ -8,7 +8,8 @@ function openWS() {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + "ptlc_jR1RXpLOISoQzUtLi8tDB22ln5UQtHUexMLU0tpPSR1"
+            'Authorization': 'Bearer ' + apiKey,
+            'User-Agent': 'http'
         }
     }).then(function (response) {
         console.log(response)

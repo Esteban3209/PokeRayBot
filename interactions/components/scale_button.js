@@ -4,7 +4,6 @@ async function scale_button(interaction) {
             parent: "1131819896066555904", 
             name: "ticket-abierto"
         })
-        channel.lockPermissions()
         channel.permissionOverwrites.edit(interaction.message.embeds[0].footer.text.split(" ")[3], {
             ViewChannel: true,
             SendMessages: true,
