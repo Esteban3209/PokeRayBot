@@ -3,7 +3,6 @@ const WebSocket = require('ws')
 
 const apiKey = process.env.API_KEY;
 
-
 function openWS() {
     axios.get('https://control.sparkedhost.us/api/client/servers/3ebb7e44/websocket', {
         headers: {
@@ -32,8 +31,6 @@ function openWS() {
         console.log(error);
     });
 }
-
-openWS()
 
 module.exports = {
     openWS
