@@ -9,7 +9,7 @@ function openWS() {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + apiKey,
+            'Authorization': 'Bearer ' + "ptlc_jR1RXpLOISoQzUtLi8tDB22ln5UQtHUexMLU0tpPSR1"
         }
     }).then(function (response) {
         console.log(response)
@@ -32,6 +32,8 @@ function openWS() {
         console.log(error);
     });
 }
+
+openWS()
 
 module.exports = {
     openWS
